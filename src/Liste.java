@@ -35,8 +35,16 @@ public class Liste {
     //	removeN(pN: int):Person
     //		löscht das Element an der gegebenen Stelle und gibt das gelöschte Element zurück
     public Person removeN(int pN) {
-
-        return null;
+        Knoten tmp = first;
+        for (int i = 0; i < pN; i++) {
+            tmp = tmp.getNachfolger();
+            if (tmp.getNachfolger() == null) {
+                return null;
+            }
+        }
+        tmp.getNachfolger().setVorgaenger(tmp.getVorgaenger());
+        tmp.getVorgaenger().setNachfolger(tmp.getNachfolger());
+        return tmp.getPerson();
     }
 
 
