@@ -36,7 +36,7 @@ public class Liste {
     //		löscht das Element an der gegebenen Stelle und gibt das gelöschte Element zurück
     public Person removeN(int pN) {
         Knoten tmp = first;
-        for (int i = 0; i < pN; i++) {
+        for (int i = 1; i < pN; i++) {
             tmp = tmp.getNachfolger();
             if (tmp.getNachfolger() == null) {
                 return null;
@@ -52,6 +52,8 @@ public class Liste {
     //		Durchsucht die Liste nach der gegebenen Person und löscht diese.
     //		Bei erfolgreichem löschen wird true bei nicht erfolgreichem löschen durch z.B. Person nicht gefunden wird false zurückgegeben
     public boolean removePerson(Person pPerson) {
+        Knoten tmp = first;
+
         return true;
     }
 
@@ -59,6 +61,16 @@ public class Liste {
     //	add(pPerson: Person): void
     //		Fügt ein Element mit der gegebenen Person an der letzten Stelle hinzu
     public void add(Person pPerson) {
+        if (first==null){
+            first = new Knoten();
+            first.setPerson(pPerson);
+            return;
+        }
+
+            last.setNachfolger(new Knoten());
+            last.getNachfolger().setVorgaenger(last);
+            last = last.getNachfolger();
+            last.setPerson(pPerson);
 
     }
 
@@ -69,5 +81,19 @@ public class Liste {
     public boolean addN(Person pPerson, int pN) {
         return true;
     }
-
+    public String toString(){
+        String ret = "[";
+        Knoten tmp = first;
+        if(first == null){
+            return ret + "]";
+        }
+        int count = 0;
+        ret = ret + "(0) " +tmp.getPerson();
+        while(tmp.getNachfolger()!=null){
+            tmp = tmp.getNachfolger();
+            ret = ret + " ; (" + ++count + ") "  + tmp.getPerson();
+        }
+        ret = ret + "]";
+        return ret;
+    }
 }
