@@ -61,16 +61,16 @@ public class Liste {
     //	add(pPerson: Person): void
     //		Fügt ein Element mit der gegebenen Person an der letzten Stelle hinzu
     public void add(Person pPerson) {
-        if (first==null){
+        if (first == null) {
             first = new Knoten();
             first.setPerson(pPerson);
+            last=first;
             return;
         }
-
-            last.setNachfolger(new Knoten());
-            last.getNachfolger().setVorgaenger(last);
-            last = last.getNachfolger();
-            last.setPerson(pPerson);
+        last.setNachfolger(new Knoten());
+        last.getNachfolger().setVorgaenger(last);
+        last = last.getNachfolger();
+        last.setPerson(pPerson);
 
     }
 
@@ -81,17 +81,18 @@ public class Liste {
     public boolean addN(Person pPerson, int pN) {
         return true;
     }
-    public String toString(){
+
+    public String toString() {
         String ret = "[";
         Knoten tmp = first;
-        if(first == null){
+        if (first == null) {
             return ret + "]";
         }
         int count = 0;
-        ret = ret + "(0) " +tmp.getPerson();
-        while(tmp.getNachfolger()!=null){
+        ret = ret + "(0) " + tmp.getPerson();
+        while (tmp.getNachfolger() != null) {
             tmp = tmp.getNachfolger();
-            ret = ret + " ; (" + ++count + ") "  + tmp.getPerson();
+            ret = ret + " ; (" + ++count + ") " + tmp.getPerson();
         }
         ret = ret + "]";
         return ret;
