@@ -64,7 +64,7 @@ public class Liste {
         if (first == null) {
             first = new Knoten();
             first.setPerson(pPerson);
-            last=first;
+            last = first;
             return;
         }
         last.setNachfolger(new Knoten());
@@ -79,6 +79,16 @@ public class Liste {
     //		Fügt ein Element mit der gegebenen Person and der gegebenen Stelle hinzu.
     //      Bei erfolgreichem hinzufügen wird true andernfalls false zurückgegeben
     public boolean addN(Person pPerson, int pN) {
+        Knoten tmp = first;
+        if (first == null) {
+            for (int i = 1; i < pN; i++) {
+                tmp = tmp.getNachfolger();
+                if (tmp.getNachfolger() == null) {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 

@@ -11,7 +11,10 @@ public class Main {
         ls.add(p3);
         ls.add(p4);
         System.out.println(ls);
-        ls.removeN(2);
+        System.out.println(ls.removeN(2));
+        System.out.println(ls);
+        ls.add(p2);
+        ls.removeLast();
         System.out.println(ls);
     }
 }
