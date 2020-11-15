@@ -53,7 +53,18 @@ public class Liste {
     //		Bei erfolgreichem löschen wird true bei nicht erfolgreichem löschen durch z.B. Person nicht gefunden wird false zurückgegeben
     public boolean removePerson(Person pPerson) {
         Knoten tmp = first;
-
+        while (tmp.getPerson() != pPerson) {
+            if (tmp.getNachfolger() == null) {
+                return false;
+            }
+            tmp = tmp.getNachfolger();
+        }
+        if (tmp != last) {
+            tmp.getNachfolger().setVorgaenger(tmp.getVorgaenger());
+        }
+        if (tmp != first) {
+            tmp.getVorgaenger().setNachfolger(tmp.getNachfolger());
+        }
         return true;
     }
 
