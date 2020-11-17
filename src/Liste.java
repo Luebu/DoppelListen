@@ -42,8 +42,12 @@ public class Liste {
                 return null;
             }
         }
-        tmp.getNachfolger().setVorgaenger(tmp.getVorgaenger());
-        tmp.getVorgaenger().setNachfolger(tmp.getNachfolger());
+        if (tmp != last) {
+            tmp.getNachfolger().setVorgaenger(tmp.getVorgaenger());
+        }
+        if (tmp != first) {
+            tmp.getVorgaenger().setNachfolger(tmp.getNachfolger());
+        }
         return tmp.getPerson();
     }
 
