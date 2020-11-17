@@ -96,12 +96,21 @@ public class Liste {
     public boolean addN(Person pPerson, int pN) {
         Knoten tmp = first;
         if (first != null) {
-            for (int i = 1; i < pN; i++) {
-                tmp = tmp.getNachfolger();
-                if (tmp.getNachfolger() == null) {
-                    return false;
-                }
+            if(pN==1) {
+                Knoten nTemp=first;
+                first=(new Knoten());
+                first.setPerson(pPerson);
+                first.setNachfolger(nTemp);
+                first.getNachfolger().setVorgaenger(first);
+
             }
+                for (int i = 2; i < pN; i++) {
+                    tmp = tmp.getNachfolger();
+                    if (tmp.getNachfolger() == null) {
+                        return false;
+                    }
+                }
+
             Knoten nTemp = tmp.getNachfolger();
             tmp.setNachfolger(new Knoten());
             tmp.getNachfolger().setPerson(pPerson);
