@@ -36,6 +36,10 @@ public class Liste {
     //		löscht das Element an der gegebenen Stelle und gibt das gelöschte Element zurück
     public Person removeN(int pN) {
         Knoten tmp = first;
+        if(pN==1){
+            first=first.getNachfolger();
+            first.setVorgaenger(null);
+        }
         for (int i = 1; i < pN; i++) {
             tmp = tmp.getNachfolger();
             if (tmp.getNachfolger() == null) {
@@ -57,6 +61,11 @@ public class Liste {
     //		Bei erfolgreichem löschen wird true bei nicht erfolgreichem löschen durch z.B. Person nicht gefunden wird false zurückgegeben
     public boolean removePerson(Person pPerson) {
         Knoten tmp = first;
+        if(tmp.getPerson()==pPerson){
+            first=first.getNachfolger();
+            first.setVorgaenger(null);
+            return true;
+        }
         while (tmp.getPerson() != pPerson) {
             if (tmp.getNachfolger() == null) {
                 return false;
