@@ -95,13 +95,19 @@ public class Liste {
     //      Bei erfolgreichem hinzufügen wird true andernfalls false zurückgegeben
     public boolean addN(Person pPerson, int pN) {
         Knoten tmp = first;
-        if (first == null) {
+        if (first != null) {
             for (int i = 1; i < pN; i++) {
                 tmp = tmp.getNachfolger();
                 if (tmp.getNachfolger() == null) {
                     return false;
                 }
             }
+            Knoten nTemp = tmp.getNachfolger();
+            tmp.setNachfolger(new Knoten());
+            tmp.getNachfolger().setPerson(pPerson);
+            tmp.getNachfolger().setVorgaenger(tmp);
+            tmp.getNachfolger().setNachfolger(nTemp);
+            tmp.getNachfolger().getNachfolger().setVorgaenger(tmp.getNachfolger());
         }
 
         return true;
