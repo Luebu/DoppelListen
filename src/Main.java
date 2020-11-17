@@ -10,6 +10,7 @@ public class Main {
         ls.add(p2);
         ls.add(p3);
         ls.add(p4);
+        ls.addN(p1,3);
         System.out.println(ls);
         ls.removePerson(p2);
         System.out.println(ls);
