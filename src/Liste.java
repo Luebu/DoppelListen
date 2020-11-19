@@ -40,11 +40,11 @@ public class Liste {
             first=first.getNachfolger();
             first.setVorgaenger(null);
         }
-        for (int i = 1; i < pN; i++) {
-            tmp = tmp.getNachfolger();
+        for (int i = 0; i < pN-1; i++) {
             if (tmp.getNachfolger() == null) {
                 return null;
             }
+            tmp = tmp.getNachfolger();
         }
         if (tmp != last) {
             tmp.getNachfolger().setVorgaenger(tmp.getVorgaenger());
@@ -114,10 +114,10 @@ public class Liste {
 
             }
                 for (int i = 2; i < pN; i++) {
-                    tmp = tmp.getNachfolger();
                     if (tmp.getNachfolger() == null) {
                         return false;
                     }
+                    tmp = tmp.getNachfolger();
                 }
 
             Knoten nTemp = tmp.getNachfolger();
